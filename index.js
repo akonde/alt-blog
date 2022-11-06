@@ -1,7 +1,7 @@
 const express = require('express');
 // const passport = require('passport');
-// const OrderRouter = require('./routes/OrderRoutes');
-// const AuthRouter = require('./routes/AuthRoutes');
+const AuthRouter = require('./routes/AuthRoutes');
+const BlogRouter = require('./routes/BlogRoutes');
 
 const app = express()
 
@@ -13,12 +13,12 @@ app.use(express.json());
 // app.use(BasicAuth)
 
 // routes
-// app.use('/orders', passport.authenticate('jwt', { session: false  }), OrderRouter)
-// app.use('/',  AuthRouter)
+app.use('/',  AuthRouter)
+app.use('/',  BlogRouter)
 
 // home route
 app.get('/', (req, res) => {
-    return res.json({ status: true });
+    return res.json({ status: true, message: "Welcome to the blogging API" });
 })
 
 // 404 route
